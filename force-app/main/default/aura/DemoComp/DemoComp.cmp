@@ -1,0 +1,44 @@
+<aura:component >
+    <p>Hello world !!</p>
+    <aura:handler name="init" value="{!this}"  action="{!c.doInit}" />
+    
+    <aura:attribute name="Var1" type="string"  />
+    
+    <aura:attribute name="arrayDemo" type="String[]" default="[ 'v1' , 'v2' , 'v3']" />
+    
+    <aura:attribute name="listDemo" type="List" default="[ 'List1' , 'List2', 'List3']" />
+    
+    <aura:attribute name="setDemo" type="Set" default="[ 'Set1' , 'Set2', 'Set3']" />
+    
+    <aura:attribute name="mapDemo" type="Map" default="{a:'Map1' , b:'Map2', c:'Map3'}" />
+    
+    <aura:attribute name="newAcc" type="Account" default="{ 'sobjectType' : 'Account' , 'Name' : 'TestAcc'}" />
+    
+    <aura:attribute name="jsObject" type="Object" />
+    
+    <aura:attribute name="userData" type="AuraDemoWrapper.WrapperTest" />
+    
+	
+    <p>Test expression : {!v.Var1}</p>
+    
+    <p>Array Demo : {!v.arrayDemo[0]}</p>
+    
+    <p>List Demo : {!v.listDemo[0]}</p>
+    
+    <p>Set Demo : {!v.setDemo[0]}</p>
+    
+    <p>Map Demo : {!v.mapDemo.b}</p>
+    
+    <p>Length of list : {!v.listDemo.length} </p>
+    
+    <hr/>
+    js Object value : {!v.jsObject.Name} - {!v.jsObject.Email}
+    
+    <hr/>
+    Wrapper Values : {!v.userData.mystr1} - {!v.userData.mystr2}
+    
+    
+    
+    
+    
+</aura:component>

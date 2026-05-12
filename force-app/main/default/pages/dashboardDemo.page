@@ -1,0 +1,17 @@
+<apex:page standardStylesheets="true" showHeader="false">
+    <apex:includeLightning />    
+    <div id="LwcId" />
+    <script>
+            $Lightning.use("c:dashboardDemo", function() {
+            $Lightning.createComponent("c:dashboardDemoUserComp",
+            {
+                note   : 'I am coming from VF Page', // You can pass the value to @api attributes if you have inside JavaScript Class.
+                recordId : '{!$CurrentPage.parameters.id}'
+            },
+            "LwcId", // the Id of div tag where your component will be rendered
+            function(cmp) {
+                console.log('Calling the LWC Component');
+            });
+        });
+    </script>
+    </apex:page>

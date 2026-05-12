@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Wired with Function. " > 
+       
+        <template if:true={accounts}>
+            <div class="slds-var-m-around_medium ">
+                <template for:each={accounts} for:item="acc">
+                    <lightning-layout key={acc.Id} class="slds-var-m-vertical_x-small "> 
+                       <lightning-layout-item>
+                        {acc.Name}
+                       </lightning-layout-item>
+                       <lightning-layout-item>
+                          
+                       </lightning-layout-item>
+                    </lightning-layout>
+                </template>
+            </div>
+        </template>
+        <template if:true={error}>
+            <div class="slds-var-m-around_medium">
+                </br> {error}
+            </div> 
+        </template>
+  
+      </lightning-card>
+</template>

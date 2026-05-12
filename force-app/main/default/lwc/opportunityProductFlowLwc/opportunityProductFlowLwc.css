@@ -1,0 +1,198 @@
+.custom-container{
+	color : black;
+}
+
+.status-box {
+    padding: 8px 12px;
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+    border-radius: 12px; /* Rounded corners */
+    text-align: center;
+}
+
+.status-box.grey {
+    background-color: #a7a7a7; /* Grey color */
+}
+
+.status-box.green {
+    background-color: #4caf50; /* Green color */
+}
+
+.status-box.red {
+    background-color: #f44336; /* Red color */
+}
+
+.status-box.yellow {
+    background-color: #ffeb3b; /* Yellow color */
+    color: #000; /* Adjust text color for yellow background */
+}
+
+.slds-position_absolute .status-box {
+    padding: 8px 12px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 12px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+.slds-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1050;
+}
+
+.slds-backdrop {
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    width: 200vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+}
+
+.slds-input-has-icon .slds-input__icon.restore-icon {
+    position: absolute;
+    right: 0.5rem; 
+    top: 60%;
+    transform: translateY(-50%);
+    z-index: 10; 
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.modal-header { 
+    padding: 0rem 1rem 1rem 1rem;
+    border-bottom: 1px solid !important;
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 1rem;
+}
+
+.modal-footer {
+    border-top: 1px solid !important;
+    padding: 1rem 1rem 0rem 1rem;
+}
+
+div.slds-card__header.slds-grid {
+    padding: 0 !important;
+}
+
+.submitButtomCls {
+    display: flex;
+    justify-content: end;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.footer-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.left-buttons,
+.right-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.bodyHeaderItem {
+    border-bottom: 1px solid rgb(226, 220, 220);
+}
+
+.opportunity-name b,
+.opportunity-stage b {
+    margin-right: 8px;
+}
+
+.slds-text-align_right {
+    text-align: right;
+}
+
+.slds-text-title_bold {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.slds-p-top_medium {
+    padding-top: 10px;
+}
+
+.nameHeaders {
+    border: 1px solid;
+    border-radius: 1rem 1rem 0rem 0rem;
+    padding: 0.5rem;
+    background: #80808026;
+}
+
+.nameBody {
+    border: 1px solid;
+    border-radius: 0rem 0rem 1rem 1rem;
+    padding: 0.5rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: end;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: end;
+}
+
+.status-box {
+    padding: 8px 12px;
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+    border-radius: 12px; /* Rounded corners */
+    text-align: center;
+}
+ 
+.status-box.grey {
+    background-color: #a7a7a7; /* Grey color */
+}
+ 
+.status-box.green {
+    background-color: #4caf50; /* Green color */
+}
+ 
+.status-box.red {
+    background-color: #f44336; /* Red color */
+}
+ 
+.status-box.yellow {
+    background-color: #ffeb3b; /* Yellow color */
+    color: #000; /* Adjust text color for yellow background */
+}
+ 
+.slds-position_absolute .status-box {
+    padding: 8px 12px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 12px;
+    text-align: center;
+}

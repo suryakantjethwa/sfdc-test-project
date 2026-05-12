@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Wired with property. " > 
+        <!-- we can not use wired property directly we need to use dot data with it to access data-->
+        <template if:true={accounts.data}>
+            <div class="slds-var-m-around_medium ">
+                <template for:each={accounts.data} for:item="acc">
+                    <lightning-layout key={acc.Id} class="slds-var-m-vertical_x-small "> 
+                       <lightning-layout-item>
+                           Account name - > {acc.Name}
+                       </lightning-layout-item>
+                       <lightning-layout-item>
+                          
+                       </lightning-layout-item>
+                    </lightning-layout>
+                </template>
+            </div>
+        </template>
+      </lightning-card>
+      
+  
+  
+</template>

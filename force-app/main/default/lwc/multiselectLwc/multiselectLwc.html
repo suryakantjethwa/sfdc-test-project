@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Multiselect demo" icon-name="utility:user">
+        <lightning-dual-listbox
+        name="options"
+        label="Select Options"
+        source-label="Available Options"
+        selected-label="Selected Options"
+        field-level-help="Select multiple options from the list"
+        options={options}
+        value={selectedValues}
+        onchange={handleChange}
+        required
+        min="1">
+    </lightning-dual-listbox>
+    <p>Selected Values: {selectedValues}</p>
+
+    </lightning-card>
+
+</template>

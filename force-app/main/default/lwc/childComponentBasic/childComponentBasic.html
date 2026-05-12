@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="I am child component." icon-name="utility:user">
+        <template if:true={mydata}>
+            <div class="slds-var-m-around_medium">
+             <b>
+                 {mydata.Name}
+             </br>
+                 {mydata.Phone}
+             </b>
+            </div>
+        </template>
+
+        <template if:false={mydata}>
+            No data found...
+        </template>
+    </lightning-card>
+</template>

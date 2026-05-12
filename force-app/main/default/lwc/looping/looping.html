@@ -1,0 +1,51 @@
+<template>
+    <!--First loop -->
+    <lightning-card title="for:each loop" icon-name="custom:custom11" class="slds-m-around_medium" icon-variant="status">
+        <div class="slds-var-m-around_medium">
+            <ul class="slds-has-dividers_around-space">
+                <template for:each={carList} for:item="car">
+                    <li class="slds-item" key={car}> {car} </li>
+                   
+                </template>
+            </ul>
+        </div>
+    </lightning-card>
+
+    <!--Second loop -->
+    <lightning-card title="iterator loop" icon-name="custom:custom11" class="slds-m-around_medium" icon-variant="status">
+        <div class="slds-var-m-around_medium">
+            <ul class="slds-has-dividers_around-space">
+                <template iterator:ceo={ceoList} >
+                    <li class="slds-has-dividers_around-space" key={ceo.value.id}>
+                        <template if:true={ceo.first}>
+                                <div class="slds-box slda-theme_shade"> 
+                                    <strong> The list of top ceo's</strong>
+                                </div>
+                            </template>
+                            <div class="slds-item" > 
+                              <strong>{ceo.value.company}  </strong>
+                              {ceo.value.name}
+                             </div>
+                             <template if:true={ceo.last}>
+                                <div class="slds-box slda-theme_shade"> 
+                                    <strong>Thanks for reading the list</strong>
+                                </div>
+                        </template>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </lightning-card>
+
+    <!--Third loop -->
+    <lightning-card title="for:each loop with array of objects " icon-name="custom:custom11" class="slds-m-around_medium" icon-variant="status">
+        <div class="slds-var-m-around_medium">
+            <ul class="slds-has-dividers_around-space">
+                <template for:each={ceoList} for:item="ceo">
+                    <li class="slds-item" key={ceo.id}> {ceo.name} {ceo.company}</li>  
+                </template>
+            </ul>
+        </div>
+    </lightning-card>
+    
+</template>

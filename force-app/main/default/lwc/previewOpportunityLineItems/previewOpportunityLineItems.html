@@ -1,0 +1,250 @@
+<template>
+    <template if:false={isCalledProductFlow}>
+    <lightning-card>
+        <div class="modal">  
+            <div class="freezetop">
+                <header class="modal-header">
+                    <lightning-layout horizontal-align="spread">
+                        <lightning-layout-item size="4" class="slds-text-align_center">
+                        </lightning-layout-item>
+                        <lightning-layout-item size="4" class="slds-text-align_center">
+                            <h2 class="slds-text-heading_large">Preview Sales</h2>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="4" class="slds-text-align_right">
+                            <span class={statusClass}>&#8226; {status}</span>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </header>
+                
+                <div class="modal-body">
+                    <div>
+                        <lightning-layout>
+                            <!-- Left Side: Opportunity Info (Name & Stage) -->
+                            <lightning-layout-item class="slds-size_6-of-12">
+                                <div class="opportunity-info">
+                                    <div class="opportunity-name">
+                                        <b>Opportunity Name:</b>
+                                        <span>{opportunityObject.opportunityName}</span>
+                                    </div>
+                                    <div class="opportunity-stage">
+                                        <b>Opportunity Stage:</b>
+                                        <span>{opportunityObject.opportunityStage}</span>
+                                    </div>
+                                </div>
+                            </lightning-layout-item>
+    
+                            <!-- Right Side: Total Amount -->
+                            <lightning-layout-item class="slds-size_6-of-12 slds-text-align_right slds-align-top">
+                                <lightning-card>
+                                    <h3><b>Total Amount:</b> ${totalAmount}</h3>
+                                </lightning-card>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </div>                               
+                    <div class="submitButtomCls">
+                        <lightning-button
+                            label="Submit for Approval"
+                            variant="brand"
+                            onclick={handleSubmitForApproval}>
+                        </lightning-button>       
+                    </div>
+                    <div class="bodyHeaderItem">
+                        <h3 class="slds-text-heading_medium">Selected Sales Items:</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="fixedBody">
+                <template for:each={groupedProducts} for:item="group">
+                    <lightning-card key={group.key}>
+                        <!-- Layout for Product Family and Product Campaign -->
+                        <lightning-layout horizontal-align="space-between" class="nameHeaders">
+                            <!-- Product Family - aligned to left -->
+                            <lightning-layout-item size="6">
+                                <b>Product Family:</b> {group.productFamily}
+                            </lightning-layout-item>
+
+                            <!-- Product Campaign - aligned to right -->
+                            <lightning-layout-item size="6" class="slds-text-align_right">
+                                <b>Product Campaign:</b> {group.productCampaign}
+                            </lightning-layout-item>
+                        </lightning-layout>
+
+                        <!-- Table-like structure for Product Name, Quantity, and Actions -->
+                        <div class="nameBody">
+                            <!-- Header Row -->
+                            <lightning-layout horizontal-align="spread">
+                                <!-- Product Name Header -->
+                                <lightning-layout-item size="4" class="slds-text-align_center">
+                                    <div class="slds-text-title_bold">Product Name</div>
+                                </lightning-layout-item>
+
+                                <!-- List Price Header -->
+                                <lightning-layout-item size="2" class="slds-text-align_center">
+                                <div class="slds-text-title_bold">Unit Price</div>
+                                </lightning-layout-item>
+
+                                <!-- Quantity Header -->
+                                <lightning-layout-item size="2" class="slds-text-align_center">
+                                    <div class="slds-text-title_bold">Quantity</div>
+                                </lightning-layout-item>
+
+                                 <!-- Total Price Header -->
+                                 <lightning-layout-item size="2" class="slds-text-align_center">
+                                    <div class="slds-text-title_bold">Total Price</div>
+                                </lightning-layout-item>
+
+                                <!-- Action Header -->
+                                <lightning-layout-item size="2" class="slds-text-align_center">
+                                    <div class="slds-text-title_bold">Action</div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+
+                            <!-- Product Rows -->
+                            <template for:each={group.products} for:item="product" for:index="index">
+                                <lightning-layout key={product.Id} horizontal-align="spread" class="slds-p-top_medium">
+                                    <!-- Product Name Column -->
+                                    <lightning-layout-item size="4" class="slds-grid slds-align_absolute-left addProdName">
+                                        <span>{product.serialNumber}.&nbsp;{product.ProductName}</span> 
+                                    </lightning-layout-item>
+                                    <!-- List Price -->
+                                    <lightning-layout-item size="2" class="slds-grid slds-align_absolute-center">
+                                        ${product.ListPrice}
+                                    </lightning-layout-item>
+                                    <!-- Quantity Column -->
+                                    <lightning-layout-item size="2" class="slds-grid slds-align_absolute-center handlePad">
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                                            <!-- Restore Button -->
+                                            <lightning-button-icon
+                                                icon-name="utility:undo"
+                                                alternative-text="Restore"
+                                                onclick={handleRestore}
+                                                data-id={product.Id}
+                                                class="slds-input__icon restore-icon"
+                                                variant="bare"
+                                                size="x-small"
+                                                if:true={product.isQuantityChanged}>
+                                            </lightning-button-icon>
+                                            <!-- Input Field -->
+                                            <input 
+                                                type="text" 
+                                                value={product.Quantity} 
+                                                class="slds-input small-input" 
+                                                data-id={product.Id} 
+                                                onblur={handleQuantityChange}
+                                                disabled={product.disabled} 
+                                                placeholder="Type Quantity" />
+                                        </div>
+                                    </lightning-layout-item>
+                                    <!--Editable Unit Price (Itam Total)-->
+                                    <lightning-layout-item size="2" class="slds-grid slds-align_absolute-center handlePad">
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                                            <!-- Restore Button -->
+                                            <lightning-button-icon
+                                                icon-name="utility:undo"
+                                                alternative-text="Restore"
+                                                onclick={handleAmtRestore}
+                                                data-id={product.Id}
+                                                class="slds-input__icon restore-icon"
+                                                variant="bare"
+                                                size="x-small"
+                                                if:true={product.isAmtChanged}>
+                                            </lightning-button-icon>
+                                            <!-- Input Field -->
+                                            <input 
+                                                type="text" 
+                                                value={product.UistPrice} 
+                                                class="slds-input small-input" 
+                                                data-id={product.Id} 
+                                                onblur={handleAmountChange}
+                                                disabled={product.disabled} 
+                                                placeholder="Type Amount" />
+                                        </div>
+                                    </lightning-layout-item>
+                                    <!-- Action Column -->
+                                    <lightning-layout-item size="2" class="slds-grid slds-align_absolute-center">
+                                        <div class="action-buttons">
+                                            <lightning-button-icon
+                                            icon-name="utility:edit"
+                                            alternative-text="Edit"
+                                            onclick={handleEdit}
+                                            data-id={product.Id}>
+                                        </lightning-button-icon>
+                                        <lightning-button-icon
+                                            icon-name="utility:delete"
+                                            alternative-text="Delete"
+                                            onclick={openDeleteModal}
+                                            data-id={product.Id}>
+                                        </lightning-button-icon>
+                                        </div>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </template>
+                        </div>       
+                    </lightning-card>
+                </template>  
+            </div>              
+            </div>
+        <lightning-spinner if:true={isLoading} alternative-text="Loading" size="large"></lightning-spinner>
+    </lightning-card>
+    <footer class="modal-footer">
+        <div class="footer-buttons">
+            <div class="left-buttons">
+                <lightning-button
+                    label="Cancel"
+                    variant="neutral"
+                    onclick={handleCancel}>
+                </lightning-button>
+                <lightning-button
+                    label="Back"
+                    variant="neutral"
+                    onclick={handleBack}>
+                </lightning-button>
+            </div>
+            <div class="right-buttons">
+                <lightning-button
+                    label="Save Changes"
+                    variant="brand"
+                    disabled={isButtonDisabled}
+                    onclick={handleSaveChanges}>
+                </lightning-button>
+                <lightning-button
+                    label="Generate Quote"
+                    variant="success"
+                    onclick={handleGenerateQuote}>
+                </lightning-button>
+            </div>
+        </div>
+    </footer> 
+</template> 
+<!-- jd>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <template if:true={isCalledProductFlow}>
+        <c-opportunity-product-flow-lwc secondscreen={isCalledProductFlow}></c-opportunity-product-flow-lwc>
+    </template>
+    <template if:true={showDeleteModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Confirm Delete</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p>Are you sure you want to delete this product?</p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <div class="modal-buttons">
+                    <lightning-button
+                        label="Cancel"
+                        variant="neutral"
+                        onclick={closeDeleteModal}>
+                    </lightning-button>
+                    <lightning-button
+                        label="Yes"
+                        variant="destructive"
+                        onclick={deleteSelectedProducts}>
+                    </lightning-button>
+                </div>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

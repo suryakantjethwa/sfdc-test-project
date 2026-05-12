@@ -1,0 +1,16 @@
+<template>
+  
+    <lightning-card title="Account Registration Page" icon-name="custom:custom60">
+      <div style="padding: 20px;" >
+        <lightning-input type="text" label="Name" value={formFields.Name} onchange={nameHandler}></lightning-input>
+        <lightning-input type="text" label="Number of Employees" value={formFields.NumberOfEmployees} onchange={numberOfEmployeesHandler}></lightning-input>
+        <lightning-input type="picklist" label="Industry" value={formFields.Industry} onchange={industryHandler}></lightning-input>
+        <lightning-input type="text" label="Annual Revenue" value={formFields.AnnualRevenue} onchange={annualRevenueHandler}></lightning-input>
+        <lightning-input type="text" label="Website" value={formFields.Website} onchange={websiteHandler}></lightning-input>
+        <lightning-button variant="brand" label="Create Account" onclick={handleSaveAccount}></lightning-button>
+        <lightning-badge label={accountid}></lightning-badge>
+        <lightning-badge label={error}></lightning-badge>
+      </div>
+    </lightning-card>
+
+</template>

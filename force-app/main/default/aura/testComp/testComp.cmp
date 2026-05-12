@@ -1,0 +1,13 @@
+<aura:component implements="force:lightningQuickAction,lightning:actionOverride,force:hasRecordId,flexipage:availableForRecordHome,force:hasSObjectName" access="global"  >
+
+   <aura:attribute name="recordId" type="Id"/>
+   <aura:attribute name="sObjectName" type="String"/>
+
+   <aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+    
+    <div>
+         Rec Id : - {!recordId}   
+         sObjectName Id : - {!sObjectName}  
+    </div>
+
+</aura:component>

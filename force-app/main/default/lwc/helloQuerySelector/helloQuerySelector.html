@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="querySelector demo" icon-name="custom:custom11"  icon-variant="status"> 
+        <div class="slds-m-around_medium">
+            <h1>Query selector comp</h1>
+            <template for:each= {usernames} for:item="u" >
+               <div class="name" key={u}  >
+                     {u}
+               </div>
+            </template>
+            <div class="child" lwc:dom="manual">
+                
+            </div>
+            <button onclick={fetchDetailHandler}>fetch</button>
+        </div>
+    </lightning-card>
+</template>

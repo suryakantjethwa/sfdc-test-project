@@ -1,0 +1,8 @@
+<template>
+    <lightning-card title="Parent comp communication - child to parent" icon-name="utility:user">
+        <div class="slds-var-m-around_medium">
+         Count of clicks : {count}
+         <c-child-Component-Communication onincreasecount={handleEventChange}></c-child-Component-Communication>
+        </div>
+    </lightning-card>
+</template>

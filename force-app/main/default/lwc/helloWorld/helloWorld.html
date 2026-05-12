@@ -1,0 +1,22 @@
+<template>
+    <lightning-card  title="Two way data binding" class="slds-m-around_medium">
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="text" onkeyup={handleNameChange} label="Enter some text"></lightning-input>
+            <div>{fullname} is a CRM company</div>
+        </div>
+    </lightning-card> 
+
+    <lightning-card  title="@track properties" class="slds-m-around_medium">
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="text" onkeyup={trackHandler} label="Enter city text"></lightning-input>
+            <div>{address.city} is a City</div>
+        </div>
+    </lightning-card>
+
+    <lightning-card  title="Getter Demo" class="slds-m-around_medium">
+        <div class="slds-p-around_medium lgc-bg">
+           <div>First user name is : {firstUser}</div>
+           <div>Sum of num1 and num2 is : {sum}</div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-var-m-around_medium">
+       {myValue}
+    </div>
+   <div>
+        <lightning-card title="Conditional Rendering in LWC">
+            <lightning-input type="checkbox" label="clickMe" onchange={handleChange} ></lightning-input>
+        </lightning-card>     
+        <template if:true={isAvailable}> Text is available !</template>
+        <template if:false={isAvailable}> Text is not available !</template>
+   </div>
+ 
+    
+</template>

@@ -1,0 +1,50 @@
+<template>
+
+   <!-- <lightning-card variant="Narrow" title="Hello" icon-name="standard:account">
+        <h1 slot="title"></h1>
+        <div slot="actions">
+            <lightning-button-icon icon-name="utility:down"></lightning-button-icon>
+        </div>
+
+        <p class="slds-p-horizontal_small">
+            Card Body Narrow (custom component)
+
+        </p>
+        <div slot="footer">
+         <h6>This is footer</h6>
+        </div>
+    </lightning-card>-->
+    <div class="slds-m-top_medium">
+        <c-custom-lightning-card>
+            <h1 slot="title">This is title reusable comp</h1>
+            <h1>This is body from reusable comp</h1>
+            <div slot="actions">
+                <lightning-button-icon icon-name="utility:down"></lightning-button-icon>
+            </div>
+    
+       
+            <div slot="footer">
+             <h6>This is footer</h6>
+            </div>
+        </c-custom-lightning-card>
+    </div>
+    <div class="slds-m-top_medium">
+        <c-custom-lightning-card >
+            <h1 slot="title">This card is without footer</h1>
+            <h1>This card is without footer</h1>
+            <div slot="actions">
+                <lightning-button-icon icon-name="utility:down"></lightning-button-icon>
+            </div>
+        </c-custom-lightning-card>
+    </div>
+    <div class="slds-m-top_medium">
+        <c-custom-lightning-card>
+            <h1 slot="title">This card is without action</h1>
+            <h1>This is body from reusable comp</h1>
+       
+            <div slot="footer">
+             <h6>This is footer</h6>
+            </div>
+        </c-custom-lightning-card>
+    </div> 
+</template>

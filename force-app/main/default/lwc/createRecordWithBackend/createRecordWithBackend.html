@@ -1,0 +1,56 @@
+<template>
+    <lightning-card>   
+        <template if:true={spinnerStatus}>      
+            <div class="spinner">        
+                    <lightning-spinner variant="brand" alternative-text="Loading..."></lightning-spinner>                       
+            </div>
+       </template>     
+             <div style="text-align: right">          
+                <lightning-button   style="margin:5px;" onclick={toggleAccordion} label={toggleAccordionLabel} slot="actions"></lightning-button>
+             </div>
+             <lightning-accordion class="financialProfileSection" allow-multiple-sections-open active-section-name={activeSections}>
+                <lightning-accordion-section name="A" label="Account Details">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large">
+                            <lightning-input type="text"  label="Name" value={Name} onchange={handlername}></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large">
+                            <lightning-input type="text"  value={AccountNumber} onchange={handleAccountNumber} label="AccountNumber"></lightning-input>
+                        </div>
+                    </div>
+                </lightning-accordion-section>
+                <lightning-accordion-section name="B" label="PickList Details">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large">
+                            <lightning-combobox
+                            name="rating"
+                            label="Rating"
+                            value={rating}
+                            options={ratingPicklistOptions}
+                            onchange={handleRating}                       
+                            ></lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-right_xx-large">
+                            <lightning-combobox
+                            name="industry"
+                            label="Industry"
+                            value={industry}
+                            options={industryPicklistOptions}
+                            onchange={handleindustry}                       
+                            ></lightning-combobox>
+                        </div>
+                    </div>
+                </lightning-accordion-section>           
+             </lightning-accordion>
+             <footer class="slds-modal__footer">
+                <div class="slds-col_bump-left slds-text-align_right slds-p-horizontal_x-small slds-text-align_center">
+                    <!--  <lightning-button variant="brand" label="Next" title="Next" type="submit" onclick={handleClickRoute}
+                        disabled={disableNextButton} class="slds-m-left_x-small slds-p-right_xx-small">
+                    </lightning-button> -->
+                    <lightning-button variant="brand" label="Save" title="Save"
+                        class="slds-m-left_x-small slds-p-right_xx-small" onclick={handleForSave}>
+                    </lightning-button>               
+                </div>
+                </footer>
+    </lightning-card>
+    </template>

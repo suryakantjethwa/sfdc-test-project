@@ -1,0 +1,4 @@
+<aura:component >
+	<p>This is test demo comp 2</p>
+    <c:DemoComp Var1="Test Value from demo comp 2" />
+</aura:component>

@@ -1,0 +1,52 @@
+<template>
+
+    <lightning-card class="slds-m-around_medium" title="Lightning record form demo" >
+        <lightning-record-form
+        object-api-name={objectName}
+        fields={fieldList}
+        onsuccess={handleSuccess}
+        ></lightning-record-form>
+    </lightning-card>
+
+    <lightning-card class="slds-m-around_medium" title="Display record using lightning record form" >
+        <lightning-record-form
+        object-api-name={objectName}
+        fields={fieldList}
+        record-id="0015j00001e4qy2AAA"
+        onsuccess={handleSuccess}
+        ></lightning-record-form>
+    </lightning-card>
+
+    <lightning-card class="slds-m-around_medium" title="Display record in view mode using lightning record form" >
+        <lightning-record-form
+        object-api-name={objectName}
+        fields={fieldList}
+        record-id="0015j00001e4qy2AAA"
+        onsuccess={handleSuccess}
+        columns="2"
+        mode="readonly"
+        ></lightning-record-form>
+    </lightning-card>
+
+    <lightning-card class="slds-m-around_medium" title="Edit record using lightning record form" >
+        <lightning-record-form
+        object-api-name={objectName}
+        fields={fieldList}
+        record-id="0015j00001e4qy2AAA"
+        onsuccess={handleSuccess}
+        mode="edit"
+        ></lightning-record-form>
+    </lightning-card>
+
+
+    <lightning-card class="slds-m-around_medium" title="Edit record using layout lightning record form" >
+        <lightning-record-form
+        object-api-name={objectName}
+        layout-type="Compact"
+        record-id="0015j00001e4qy2AAA"
+        onsuccess={handleSuccess}
+        mode="edit"
+        ></lightning-record-form>
+    </lightning-card>
+    
+</template>

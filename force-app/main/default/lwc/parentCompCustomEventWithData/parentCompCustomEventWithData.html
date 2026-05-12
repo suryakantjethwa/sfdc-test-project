@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Parent comp custom event with data..." icon-name="utility:user">
+        <div class="slds-var-m-around_medium">
+         Default Message : {msg}<br/><br/>
+         Count of clicks : {count}
+         <c-child-Comp-Custom-Event-With-Data onincreasecount={handleEventChange}></c-child-Comp-Custom-Event-With-Data>
+        </div>
+    </lightning-card>
+</template>

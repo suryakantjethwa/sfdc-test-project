@@ -1,0 +1,30 @@
+<template>
+
+    <lightning-card title="Conditional Rendering" icon-name="custom:custom12" class="slds-m-around_medium">
+        <div class="slds-var-m-around_medium" >
+            <lightning-button variant="success" 
+                              label="Toggle" 
+                              title="Successful action" 
+                              onclick={handleClick}
+                              class="slds-m-left_x-small">
+                            
+            </lightning-button>
+
+            <template if:true={isVisible}>
+                <div>Welcome to Salesforce !!</div>
+            </template>
+            <template if:false={isVisible}>
+                <div>You can't see the data. Please click the button !!</div>
+            </template>
+
+            <lightning-input type="text" onkeyup={changeHandler} label="Type hello to see the above text"></lightning-input>
+
+            <template if:true={helloMethod}>
+                <div>
+                    Hurrey !! You have typed the correct word
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+    
+</template>

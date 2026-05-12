@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="How to bind my HTML element in LWC" > 
+        <div class="slds-var-m-around_medium">
+           Hello {myValue}
+        </div>
+        <div style="padding:10px">
+            <lightning-input label="Dynamic value for binding " value={myValue} onchange={handleChange}>
+
+            </lightning-input>
+        </div>
+    </lightning-card>
+</template>

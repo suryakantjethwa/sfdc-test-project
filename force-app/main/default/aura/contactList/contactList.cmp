@@ -1,0 +1,26 @@
+<aura:component controller="AuraDemoWrapper" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="Account" type="Account" />
+    <aura:attribute name="Contacts" type="Contact" />
+    <aura:attribute name="Columns" type="List" />
+    <aura:attribute name="recordLoadError" type="String"/>
+    
+    
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+    
+    <force:recordData aura:id="accountRecord"
+                      recordId="{!v.recordId}"
+                      targetFields="{!v.Account}"
+                      layoutType="FULL"
+                      targetError="{!v.recordLoadError}"/>
+    
+    <lightning:card iconName="standard:contact"
+                    title="{!'Contact List for ' + v.Account.Name  }">
+        <lightning:datatable data="{!v.Contacts}" columns="{!v.Columns}"
+                             keyField="Id" hideCheckboxColumn="false" />
+    </lightning:card>
+    
+    {!v.recordLoadError}
+	
+</aura:component>
